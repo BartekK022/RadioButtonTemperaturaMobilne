@@ -41,8 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String value = editTextTemperatura.getText().toString();
+                        int temperatura = Integer.parseInt(value);
                         if(radioButtonPrzeliczZCelsjusza.isChecked() && radioButtonPrzeliczNaCelsjusza.isChecked()) {
-                            textViewWynik.setText();
+                            textViewWynik.setText(temperatura + "&#176;C");
+                        }
+                        if(radioButtonPrzeliczZCelsjusza.isChecked() && radioButtonPrzeliczNaKalvina.isChecked()) {
+                            double wynikKelwin = temperatura + 273.15;
+                            textViewWynik.setText(temperatura + "&#176;C, to jest: " + wynikKelwin + " Kelwina");
+                        }
+                        if(radioButtonPrzeliczZCelsjusza.isChecked() && radioButtonPrzeliczNaFarenheita.isChecked()) {
+                            double wynikFarenheita = ((temperatura * 1.8) + 32);
+                            textViewWynik.setText(temperatura + "&#176;C, to jest: " + wynikFarenheita + " Farenheita");
                         }
                     }
                 }
